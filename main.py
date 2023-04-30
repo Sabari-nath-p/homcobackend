@@ -1,5 +1,5 @@
 from bson import ObjectId
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 
@@ -34,6 +34,7 @@ def getproductData():
         item['_id'] = str(item['_id'])
     # Return the data as a JSON response
     return jsonify(data_list)
+
 @app.route('/addpackMaterial', methods=['POST'])
 def insert_one_packData():
     collection = db['packingMaterial']
