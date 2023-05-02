@@ -11,6 +11,10 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 
 db = client['Homco'] # Replace with your own database name
  # Replace with your own collection name
+@app.route("/", methods=["GET"])
+def hello():
+    return "hello"
+
 @app.route('/packingmaterial', methods=['GET'])
 def getpackingData():
     # Retrieve all data in the collection
@@ -35,7 +39,7 @@ def getproductData():
     # Return the data as a JSON response
     return jsonify(data_list)
 
-@app.route('/addpackMaterial', methods=['POST'])
+@app.route('/a', methods=['POST'])
 def insert_one_packData():
     collection = db['packingMaterial']
     # Parse the JSON data from the request body
